@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<style>
+:root{
+    font-size: 18px;
+    font-family: monospace;
+}
+
+p{
+    font-size: 16px;
+}
+
+div{
+    border: 1px solid;
+    padding: 1rem;
+    border-radius: 10px;
+    background: white;
+}
+
+#envelope div{
+    font-family: sans-serif;
+}
+
+#envelope{
+    background-color: plum;
+}
+
+.caixa-alta{
+    text-transform: uppercase;
+}
+
+button{
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+td{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: purple;
+    padding: 0;
+    z-index: 1;
+}
+
+</style>
+<body>
+<h1>Gerador de HTML do docs</h1>    
+<div class="botoes">
+    <button id="salvar-editar" onClick="togglesalva()"> </button>
+    
+    <button id="copiar-html" onClick="copiaCodigo()">Copiar HTML</button>
+    </div>
+<div id="envelope">
+<h4>Conteúdo do capítulo:</h4>
+<div id="capitulo" contenteditable="true"></div>
+</div>
+
+<script>
+
+let envCapitulo = document.getElementById('envelope')
+let conteudo
+let salvarEditar = document.getElementById('salvar-editar')
+let copiarHTML = document.getElementById('copiar-html')
+let figuras
+let modoEditar = true
+let codGerado
+
+function togglesalva(){
+    conteudo = document.querySelectorAll('#envelope div')
+    figuras = document.querySelectorAll('p span span img')
+    modoEditar = !modoEditar
+
+    if(modoEditar == true){
+    for (let i = 0; i < conteudo.length; i++) {
+    conteudo[i].contentEditable = 'false'
+    }
+    salvarEditar.innerText = 'Editar'
+    copiarHTML.disabled = false
+    }
+
+    if(modoEditar == false){
+        for (let i = 0; i < conteudo.length; i++) {
+        conteudo[i].contentEditable = 'true'
+        }
+        
+        salvarEditar.innerText = 'Finalizar'
+        copiarHTML.disabled = true
+    }
+    document.querySelectorAll('*').forEach(b=>b.removeAttribute('style'));
+    document.querySelectorAll('ul, p, h1, h2, h3, h4, h5').forEach(b=>b.removeAttribute('id'));
+    document.querySelectorAll('ul, p, h1, h2, h3, h4, h5').forEach(b=>b.removeAttribute('dir'));
+    figuras.forEach(b=>b.outerHTML = '<img src="http://localhost:8888/tccdoc/wp-content/uploads/2023/08/lcestuneimg.png" width="300" height="300">')
+
+    if(modoEditar == true){
+        envCapitulo.style.filter = 'brightness(120%) saturate(40%)'
+    }
+    else{
+        envCapitulo.style.filter = 'none'
+    }
+
+}
+
+
+function copiaCodigo(){
+    let areatransf = document.getElementById('capitulo').innerHTML
+    const element = document.createElement("textarea");
+    element.value = areatransf;
+    document.body.appendChild(element)
+    element.select();
+    document.execCommand("copy");
+    document.body.removeChild(element);
+}
+
+togglesalva()
+
+</script>
+
+
+</body>
+</html>

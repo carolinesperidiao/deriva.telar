@@ -1,0 +1,93 @@
+<ul id="menu-menu-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-986"><a href="http://localhost:8888/tccdoc/" aria-current="page" itemprop="url"><span itemprop="name">Justificativa do trabalho</span></a></li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page bellows-menu-item-has-children menu-item-988"><a href="http://localhost:8888/tccdoc/moodboard-teste-eu-nao-aguento-mais-sofrer/" itemprop="url"><span itemprop="name">moodboard teste eu nao aguento mais sofrer</span></a>
+    <ul class="sub-menu">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-987"><a href="http://localhost:8888/tccdoc/moodboard-teste/" itemprop="url"><span itemprop="name">moodboard teste</span></a></li>
+    </ul>
+    </li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page bellows-menu-item-has-children menu-item-990"><a href="http://localhost:8888/tccdoc/sob-construcao/" itemprop="url"><span itemprop="name">Sob construção!</span></a>
+    <ul class="sub-menu">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-989"><a href="http://localhost:8888/tccdoc/sample-page/" itemprop="url"><span itemprop="name">Sample Page</span></a></li>
+    </ul>
+    </li>
+    </ul>
+
+    <style>
+      .nicolas-custom-div{
+        display:flex;
+        justify-content:space-between;
+      }
+
+      .bellows-menu-item-has-children .sub-menu{
+        display:none;
+      }
+
+
+    </style>
+    <script>
+
+    function adicionarSetinhas(){
+
+      //Pegamos os elementos do menu do bellows que possuem submenus
+      var itensDoMenu = document.querySelectorAll(".bellows-menu-item-has-children");
+        for (var i = 0; i < itensDoMenu.length; i++) {
+        //  if(itensDoMenu[i].innerHTML.includes("<ul")){
+
+              //Adiciona a setinha, além de uma div wrapper em volta da div com a setinha para fazer ser flex
+              //A setinha tá na tag <i>, podemos adicionar nela o onclick="toggleAccordion(this)" e o value ="0"
+              // Quando usamos o this na função javascript, o onclick envia o objeto sendo clicado para a função, então conseguimos o elemento html que clicamos
+
+              itensDoMenu[i].firstChild.outerHTML = '<div class="nicolas-custom-div">' + itensDoMenu[i].firstChild.outerHTML + '<i onclick ="toggleAccordion(this)" class="minha-classe-das-setinhas bellows-subtoggle-icon-collapse fa fa-chevron-up">a</i></div>';
+
+          //  }
+          }
+
+          //Precisamos adicionar um value = 0 nas setinhas, por algum motivo não da pra fazer isso só digitando dentro da tag do <i>
+          // Usamos o value para saber o estado do toggle do accordion (0 é fechado, 1 é aberto)
+        var setinhasDoMenu = document.querySelectorAll(".minha-classe-das-setinhas");
+        for (var i = 0; i < setinhasDoMenu.length; i++) {
+          setinhasDoMenu[i].value = 0;
+        }
+
+    }
+
+    adicionarSetinhas();
+
+    function toggleAccordion(setinha){
+      console.log(setinha);
+      //pega a div wrapper
+      let parentdiv =  setinha.parentElement;
+
+      console.log(parentdiv);
+      //pega o elemento do accordion
+      let accordion =  parentdiv.nextElementSibling;
+      console.log(accordion);
+      //Se o value do ícone for 0, roda esse código
+      console.log(setinha.value);
+      if(setinha.value == 0){
+
+        //abre o accordion
+        accordion.style.display = "block";
+
+        //roda a setinha
+        setinha.style.transform = "rotate(90deg)";
+
+        //muda o value da setinha
+        setinha.value = 1;
+        console.log(accordion);
+      }
+      //se for um 1 roda o código abaixo
+      else{
+
+        //fecha o accordion
+        accordion.style.display = "none";
+
+        //(des)roda a setinha
+        setinha.style.transform = "rotate(0deg)";
+
+        //muda o value da setinha
+        setinha.value = 0;
+      }
+
+    }
+
+    </script>
