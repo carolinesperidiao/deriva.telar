@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+body{
+    padding: 1rem;
+}
+img{
+    width: min-content;
+    image-rendering: pixelated;
+}
+
+
+
+@keyframes floatie{
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(10px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+:root{
+    font-size: 16px;
+    font-family: monospace;
+}
+
+div{
+    padding: 0.5rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+<body>
+    
+    <h2>Efeito dithered Blender+Photoshop</h2>
+    <ol>
+        <li>Selecionar um tamanho de render (86x86 para ícones de UI), e menos de 300px para figuras em geral</li>
+        <li>Renderizar no blender em toon shading como sequência PNG RGBA (preferencialmente animação de 40 frames)</li>
+        <li>Photoshop: Open</li>
+        <li>Selecionar primeira imagem da pasta, selecionar opção image sequence no diálogo</li>
+        <li>Escolher framerate: <b>12fps</b></li>
+        <li>File > Export > Save for Web (Legacy)</li>
+        <li>Seguir as seguintes configurações (figura abaixo) e salvar.<br><br>
+        <img src="config-save4web.png">        
+        </li>
+        </ol>
+        <h3>Resultados com blend mode:</h3>
+    <div style="background: linear-gradient(lavender, pink);">
+        <img title="5 cores" style="mix-blend-mode: multiply;" src="Untitled-4.gif">
+        <img title="'auto' cores"style="mix-blend-mode: multiply;" src="Untitled-6.gif">
+        <img title="5 cores" style="mix-blend-mode: multiply;" src="Untitled-7.gif">
+        <img title="6 cores" style="mix-blend-mode: multiply;" src="Untitled-8.gif">
+        mix-blend-mode: multiply;
+    </div>
+    <div style="background: linear-gradient(navy, rgb(0, 0, 73))">
+        <img title="5 cores" style="mix-blend-mode: hard-light;" src="Untitled-4.gif">
+        <img title="'auto' cores" style="mix-blend-mode: hard-light;" src="Untitled-6.gif">
+        <img title="5 cores" style="mix-blend-mode: hard-light;" src="Untitled-7.gif">
+        <img title="6 cores" style="mix-blend-mode: hard-light;" src="Untitled-8.gif">
+    <span style="filter: invert(1)">
+        mix-blend-mode: hard-light;
+</span>
+    </div>
+</body>
+</html>
