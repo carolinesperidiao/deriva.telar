@@ -1,0 +1,22 @@
+INDICE DE CATEGORIAS ordem de aparecimento
+(SEM TITULO): fontes, variaveis, scrollbars, processamento de imagens, body, coisas que aparecem antes do conteudo da pagina em si
+TEXTO - tamanhos e estilos de texto
+BOTAO VOLTAR PARA HOME
+CABEÇALHO E BARRAS DE NAVEGAÇÃO - tudo relacionado à navbar e ao header, que nesse site fica no canto inferior da tela
+RESPONSIVIDADE CABEÇALHO
+RODAPÉ - tudo relacionado ao footer que fica ao fim da página
+RESPONSIVIDADE RODAPÉ
+RESULTADOS DE PESQUISA - estilo da pagina de resultados de pesquisa
+RESPONSIVIDADE RESULTADOS DE PESQUISA
+ANIMAÇÕES ENTRADA - animações de entrada de elementos
+IMAGENS E LIGHTBOX - estilização referente as imagens e comportamento do lightbox
+MARQUEE/THUMBNAIL INICIO DA PAGINA - estilização dos heroes que aparecem nas paginas
+PAGINA DE TEXTO - tudo relativo às páginas-artigo textual (filhas)
+PAGINA DE TEXTO - MOBILE E TABLET / PAGINA DE TEXTO - DESKTOP - responsividade das páginas-artigo textual (filhas)
+COMENTARIOS - referente aos comentarios dentro das páginas-artigo (filhas)
+RESPONSIVIDADE DO BOX DE COMENTARIOS
+FORMULARIOS - estilização dos formulários
+INPUT ANONIMATO - EXCECAO
+CORES FAVORITAS FORM
+MOODBOARDS - estilização dos moodboards
+RESPONSIVIDADE MOODBOARDS - PAINEL 12 COLUNAS / PAINEL 9 COLUNAS / PAINEL 6 COLUNAS
