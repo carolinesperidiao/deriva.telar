@@ -66,6 +66,7 @@ td{
 
 let envCapitulo = document.getElementById('envelope')
 let conteudo
+let contMinusSpan
 let salvarEditar = document.getElementById('salvar-editar')
 let copiarHTML = document.getElementById('copiar-html')
 let figuras
@@ -96,8 +97,12 @@ function togglesalva(){
     document.querySelectorAll('*').forEach(b=>b.removeAttribute('style'));
     document.querySelectorAll('ul, p, h1, h2, h3, h4, h5').forEach(b=>b.removeAttribute('id'));
     document.querySelectorAll('ul, p, h1, h2, h3, h4, h5').forEach(b=>b.removeAttribute('dir'));
-    figuras.forEach(b=>b.outerHTML = '<img src="http://localhost:8888/tccdoc/wp-content/uploads/2023/08/lcestuneimg.png" width="300" height="300">')
+    figuras.forEach(b=>b.outerHTML = '<img src="https://www.tcc2carol.untidystudio.com/wp-content/uploads/2023/08/lcestuneimg.png" width="300" height="300">')
 
+    document.querySelectorAll('span').forEach(spanElmt => {spanElmt.outerHTML = spanElmt.innerHTML; })
+    document.querySelectorAll('p a span').forEach(paspanElmt => {paspanElmt.outerHTML = paspanElmt.innerHTML; })
+    document.querySelectorAll('p span').forEach(pspanElmt => {pspanElmt.outerHTML = pspanElmt.innerHTML; })
+    
     if(modoEditar == true){
         envCapitulo.style.filter = 'brightness(120%) saturate(40%)'
     }
