@@ -1,0 +1,224 @@
+div#sec-home-1 {
+    background: var(--planofundo);
+	height: var(--mobvh);
+		z-index: 6;
+    /*height: 100vh;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+	position: relative;
+	border-bottom: 1px solid black;
+	box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+
+}
+
+@media only screen and (min-width: 1240px){
+	div#sec-home-1{
+		height: 100vh;
+	  	z-index:0;
+		box-shadow: 0 0px 0px transparent;
+	}
+}
+
+#pagina-home{
+	--titulo-trabalho: 'deriva~telar';
+	--subtitulo-trabalho: 'navegações históricas pelo web design';
+}
+
+#sec-home-1 h1:before, #sec-home-1 h2:before {
+    content: var(--titulo-trabalho);
+}
+
+#sec-home-1 h5:before {
+    content: var(--subtitulo-trabalho);
+}
+
+@keyframes marquee-truu{
+	0%{
+		transform: translatex(0%);
+	}
+	100%{
+		transform: translatex(-100%);
+	}
+}
+
+#sec-home-1 h2 {
+    width: 100%;
+    top: 1rem;
+    position: absolute;
+}
+
+.marquee-home {
+    display: flex;
+    /*gap: 2rem;*/
+    width: max-content;
+    z-index: 0;
+}
+
+.marquee-home:nth-child(2) {
+	mix-blend-mode: var(--blendmodeicones);
+}
+
+.marquee-home:nth-child(3) .itens-marquee-home{
+	/*background: red;*/
+	animation-direction: reverse;
+	animation-duration: 6s;
+}
+
+.marquee-home:nth-child(3) h5 {
+	padding: 0 1rem;
+}
+
+.itens-marquee-home {
+    display: flex;
+    /*gap: 2rem;*/
+    align-items: center;
+    animation: marquee 8s linear infinite;
+}
+
+.marquee-home:hover>.itens-marquee-home {
+    animation-play-state: paused;
+	text-decoration: underline;
+	text-decoration-color: var(--txt-opq);
+	text-decoration-thickness: 5px;
+	text-underline-offset: 8px;
+}
+
+#sec-home-1 h1 {
+	font-style: italic;
+    font-size: calc(100vh / 5);
+	line-height: 0.9;
+	padding: 0 3rem;
+}
+
+#sec-home-1 h1, #sec-home-1 h5{
+	animation: none !important;
+	opacity: 1 !important;
+}
+
+#sec-home-1 .icone-sixcolor{ /*pra garantir que a imagem nao fique estourada em telas hi-res*/
+	/*transform: scale(0.7);*/
+	transform: scale(0.5);
+	width: 300px;
+	transform-origin: left;
+}
+
+#sec-home-1 .icone-sixcolor:before {
+    content: url('/wp-content/uploads/2023/11/logo-mac-600px.png');
+}
+
+.itens-marquee-home h5 {
+    font-size: calc(100vh / 30);
+    font-family: 'iA Writer Duo';
+	animation: none;
+}
+
+.quadradosolid {
+    background: var(--txt);
+    width: .5rem;
+    height: .5rem;
+}
+
+div#seta-descer {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+svg#ico-scrolldown {
+	transition: 0.2s;
+	transform: scale(0.7);
+}
+
+svg#ico-scrolldown:hover {
+    transform: scale(1.2);
+}
+
+#ico-scrolldown path {
+    fill: var(--txt);
+}
+
+div#sec-home-2 {
+    background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),var(--txt);
+    text-align: center;
+    padding: 0.75rem;
+    padding: 6rem 0.75rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sec-home-2 h1, #sec-home-2 p {
+    background: var(--gradientmenu);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    max-width: 750px;
+    width: -webkit-fill-available;
+    font-weight: bold;
+}
+
+#sec-home-2 h1::selection, #sec-home-2 p::selection, #sec-home-2 h1::-webkit-selection, #sec-home-2 p::-webkit-selection{
+	-webkit-text-fill-color: var(--txt);
+	color: var(--txt);
+	background: var(--contrast);
+}
+
+div#sec-home-3 {
+    background: var(--planofundo);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 6rem 0;
+}
+
+div#wrap-capitulos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 40px 100px;
+    justify-content: center;
+    padding: 0 2rem;
+    max-width: 1240px;
+}
+
+#wrap-capitulos .icone-capitulo-home {
+    display: flex;
+	color: var(--txt);
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    filter: drop-shadow(3px 3px 2px rgba(0,0,0,0.33));
+    mix-blend-mode: var(--blendmodeicones);
+    image-rendering: pixelated;
+    border-radius: var(--raioborda);
+    padding: 6px;
+	text-align: center;
+	transition: 0.5s ease-in-out;
+
+}
+
+a#voltahome{
+display:none;
+}
+.entry-content {
+    margin: 0rem;
+}
+div#container main#content article {
+    margin: 0 !important;
+}
+.entry-title, #hero-capitulo:nth-child(1){
+display:none;
+}
+main#content{
+max-width:100%;
+}
