@@ -1,0 +1,136 @@
+<html>
+<style> 
+#container main{
+max-width: 100vw;
+}
+.plugin-figure, div#cont-gerado, 
+div#plugin-figure-preview{
+  padding: 1rem;
+  border: 1px solid;
+  font-size: 1rem;
+  border-radius: var(--raioborda);
+}
+.plugin-figure input{
+    width: 100%;
+}
+.plugin-figure input, .plugin-figure button, .plugin-figure select{
+       font-size: 1.2rem;
+}
+div#plugin-figure-preview a{
+	pointer-events: none;
+}
+div#plugin-figure-preview:before{
+	content: 'Pré visualização:';
+}
+
+textarea{
+width: 100%;
+height:250px;
+}
+
+</style>
+<body>
+<div class ="plugin-figure">
+    <label for="URLimg"> URL da imagem </label>
+<input value="/wp-content/uploads/2023/11/" id="URLimg">
+<br><br>
+<label for="txt-alternativo"> Texto alternativo </label>
+<br> <textarea id="txt-alternativo"></textarea>
+<br><br>    
+<label for="legenda"> Legenda </label>
+<br> <textarea id="legenda"> </textarea>
+<br><br>
+<label for="proporcao">Proporção no grid:</label>
+<select id="proporcao">
+    <option value="_3por3">Quadrado grande 3x3</option>
+    <option value="_3por2">Retangulo grande A 3x2</option>
+    <option value="_4por3">Retangulo grande B 4x3</option>
+    <option value="_5por3">Retangulo grande C 5x3</option>
+    <option value="_1por1">Quadrado pequeno 1x1</option>
+    <option value="_4por1">Retangulo largo A 4x1</option>
+    <option value="_5por1">Retangulo largo B 5x1</option>
+  </select>
+  <label for="classe-add">/ Classe adicional:</label>
+  <select id="classe-add">
+    <option value="nenhuma">Nenhuma</option>
+    <option value="pixelado">Pixelado</option>
+  </select>
+  <span id="dimensoes">/ L x A: </span>
+  <br><br>
+<span>Lembrete: se a imagem tiver <b>menos de 100px de altura</b>, é recomendado adicionar a classe <b>'.pixelado'</b></span>
+  <br><br>
+  <button onClick="geracao(); geracao()">GERAR CÓDIGO</button>
+  <button id="copiar" onClick="copiaHTML()">COPIAR</button>
+  <br><br>
+  <div id="cont-gerado">
+  </div>
+</div>
+<div id="plugin-figure-preview"></div>
+
+<script>
+
+let linkImg
+let altTxt
+let legImg
+let propImg
+let classAdd
+let classeAdicionada
+let dimensoesImg
+let codigo = document.getElementById('cont-gerado')
+let previa = document.getElementById('plugin-figure-preview')
+let codGerado
+
+function geracao(){
+    linkImg = document.getElementById('URLimg').value
+    legImg = document.getElementById('legenda').value
+    altTxt = document.getElementById('txt-alternativo').value
+    propImg = document.getElementById('proporcao').value
+    classAdd = document.getElementById('classe-add').value
+    
+    
+    if(classAdd == 'nenhuma'){
+        classeAdicionada = ''
+    }
+    else{
+        classeAdicionada = classAdd
+    }
+    
+    codGerado = '<figure class="fig ' + propImg + ' ' + classeAdicionada +'"> <a href="' + linkImg + '"> <img src="' + linkImg + '" title="'+ altTxt + '" alt="'+ altTxt + '"> </a> <figcaption>' + legImg + '</figcaption> </figure>'
+
+    codigo.innerText = codGerado
+    previa.innerHTML = codGerado
+    dimensoesImg = document.querySelector('div figure img').clientWidth + ' x ' + document.querySelector('div figure img').clientHeight
+    document.getElementById('dimensoes').innerText = '/ L x A: ' + dimensoesImg
+
+    if (document.getElementById('dimensoes').innerText == '/ L x A: 0 x 0'){
+    codigo.innerText = codGerado
+    previa.innerHTML = codGerado
+    dimensoesImg = document.querySelector('div figure img').clientWidth + ' x ' + document.querySelector('div figure img').clientHeight
+    document.getElementById('dimensoes').innerText = '/ L x A: ' + dimensoesImg
+}
+
+    if(document.querySelector('div figure img').clientHeight < 100 ){
+    document.getElementById('dimensoes').style.color = 'red'
+    document.querySelector('span b').style.color = 'red'
+    }
+    else{
+    document.getElementById('dimensoes').style.color = 'grey'
+    document.querySelector('span b').style.color = 'grey'
+    }
+    //document.querySelector('div figure img').style.width = '100%'
+
+}
+
+function copiaHTML(){ 
+    let areatransf = document.getElementById('cont-gerado').innerText
+    const element = document.createElement("textarea");
+    element.value = areatransf;
+    document.body.appendChild(element)
+    element.select();
+    document.execCommand("copy");
+    document.body.removeChild(element);
+}
+
+</script>
+</body>
+</html>
